@@ -7,6 +7,10 @@ from sklearn.model_selection import train_test_split
 from sklearn.utils import shuffle
 from os import listdir
 from os.path import isfile, join
+from sklearn.metrics import confusion_matrix
+import pandas as pd
+import itertools
+import seaborn as sn
 
 K.set_image_dim_ordering('tf')
 
@@ -34,7 +38,6 @@ for i, each_type in enumerate(types):
         if isfile(file_path):
             files.append(file_path)
             labels.append(i)
-
 images = np.empty(len(files), dtype=object)
 for i in range(len(files)):
     ip_img = cv2.imread(files[i])
@@ -62,15 +65,6 @@ input_shape = img_data[0].shape
 print(input_shape)
 
 model = Sequential()
-"""
-model.add(ZeroPadding2D((1, 1), input_shape=input_shape))
-model.add(Convolution2D(4, 3, 3))
-model.add(Activation('relu'))
-model.add(ZeroPadding2D((1, 1)))
-model.add(Convolution2D(4, 3, 3))
-model.add(Activation('relu'))
-model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2)))
-"""
 
 model.add(ZeroPadding2D((1, 1), input_shape=input_shape))
 model.add(Convolution2D(8, 3, 3))
@@ -98,22 +92,9 @@ model.add(Convolution2D(32, 3, 3))
 model.add(Activation('relu'))
 model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2)))
 #model.add(Dropout(0.5))
-"""
-model.add(ZeroPadding2D((1, 1)))
-model.add(Convolution2D(64, 3, 3))
-model.add(Activation('relu'))
-model.add(ZeroPadding2D((1, 1)))
-model.add(Convolution2D(64, 3, 3))
-model.add(Activation('relu'))
-model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2)))
-#model.add(Dropout(0.5))
-"""
+
 model.add(Flatten())
-"""
-model.add(Dense(64, kernel_regularizer=regularizers.l2(0.001)))#, activity_regularizer=regularizers.l1(0.01)))
-model.add(Activation('relu'))
-model.add(Dropout(0.125))
-"""
+
 model.add(Dense(128, kernel_regularizer=regularizers.l2(0.001)))#, activity_regularizer=regularizers.l1(0.01)))
 model.add(Activation('relu'))
 model.add(Dropout(0.8))
@@ -121,19 +102,15 @@ model.add(Dropout(0.8))
 model.add(Dense(256, kernel_regularizer=regularizers.l2(0.001)))#, activity_regularizer=regularizers.l1(0.01)))
 model.add(Activation('relu'))
 model.add(Dropout(0.5))
-"""
-model.add(Dense(512, kernel_regularizer=regularizers.l2(0.001)))#, activity_regularizer=regularizers.l1(0.01)))
-model.add(Activation('relu'))
-model.add(Dropout(0.75))
-"""
+
 model.add(Dense(num_classes))
 model.add(Activation('softmax'))
 
 model.compile(loss='categorical_crossentropy',
               optimizer='adamax', metrics=["accuracy"])
 
-num_epoch = 75
-hist = model.fit(X_train, y_train, batch_size=16, nb_epoch=num_epoch,
+num_epoch = 100
+hist = model.fit(X_train, y_train, batch_size=8, nb_epoch=num_epoch,
                  verbose=1, validation_data=(X_test, y_test))
 
 train_loss = hist.history['loss']
@@ -141,6 +118,32 @@ val_loss = hist.history['val_loss']
 train_acc = hist.history['acc']
 val_acc = hist.history['val_acc']
 xc = range(num_epoch)
+
+#Confusion Matrix:
+preds = np.round(model.predict(X_test))
+categorical_test_labels = pd.DataFrame(y_test).idxmax(axis=1)
+categorical_preds = pd.DataFrame(preds).idxmax(axis=1)
+confusion_matrix= confusion_matrix(categorical_test_labels, categorical_preds)
+print('confusion_matrix',confusion_matrix)
+
+
+def plot_confusion_matrix(cm, classes,
+    normalize=False,
+    title='Confusion matrix',
+    cmap=plt.cm.Blues):
+ 
+#Add Normalization Option
+#prints pretty confusion metric with normalization option        
+    #cm = pd.DataFrame(test_confusion_matrix, range(6), range(6))
+    
+    sns.heatmap(confusion_matrix, cmap="BuPu", annot=True,cbar=False)
+    plt.ylabel('True Label')
+    plt.xlabel('Predicted Label')
+    plt.title('Confusion Matrix')
+    plt.savefig('confusion.png')
+
+   
+plot_confusion_matrix(confusion_matrix, ['cardboard', 'glass', 'metal', 'paper', 'plastic', 'trash'], normalize=False)
 
 plt.figure(1, figsize=(7, 5))
 plt.plot(xc, train_loss)
