@@ -13,7 +13,7 @@ Modify loopsize to generate more data if needed.
 This needs to be run only once on each machine.
 Note: Code is still crude and needs to be optimized.
 
-## SVM Implenetation:
+## SVM Implemetation:
 ### Using SIFT
 
 ## CNN Implementation:
