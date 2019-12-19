@@ -20,7 +20,8 @@ Run the below code to replicate the SVM results:
 SVM_classifier_sift.ipynb
 
 ### Using SURF
-Run the below code to replicate our results:
+Run the below code to replicate our SVM results:
+SVM_classifier_surf.py
 
 
 ## CNN Implementation:
