@@ -23,5 +23,6 @@ We have tried multiple approaches of CNN implementaion and built the best possib
 2. wasteSegregation_CNN.py
 
 You can also find the plots for different augmented and non augmented data in the repository.
+We have also implemented VGG16 pre trained model in order to achieve good accuracy since the data set is small it did not perform well despite providing it with the trained weights of object detection.
 
 
