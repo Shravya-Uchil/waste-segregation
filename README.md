@@ -16,6 +16,12 @@ Note: Code is still crude and needs to be optimized.
 ## SVM Implemetation:
 Run this code from the dataset-resized\dataset-resized folder or by using the augmented datset mentioned above. SVM model was trained by tuning various paramenters like the descritors(SIFT and SURF from openCV). Trained models seperately using augmented data and the basic original data.
 ### Using SIFT
+Run the below code to replicate the SVM results:
+SVM_classifier_sift.ipynb
+
+### Using SURF
+Run the below code to replicate our results:
+
 
 ## CNN Implementation:
 We have tried multiple approaches of CNN implementaion and built the best possible CNN classifier for image segregation. In order to replicate our results and finding of the project run and execute the below files:
