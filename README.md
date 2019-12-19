@@ -14,6 +14,7 @@ This needs to be run only once on each machine.
 Note: Code is still crude and needs to be optimized.
 
 ## SVM Implemetation:
+Run this code from the dataset-resized\dataset-resized folder or by using the augmented datset mentioned above. SVM model was trained by tuning various paramenters like the descritors(SIFT and SURF from openCV). Trained models seperately using augmented data and the basic original data.
 ### Using SIFT
 
 ## CNN Implementation:
