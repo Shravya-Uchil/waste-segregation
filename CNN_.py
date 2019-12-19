@@ -187,4 +187,4 @@ print(new_img.shape)
 
 print(model.predict(new_img))
 print(model.predict_classes(new_img))
-
+#
