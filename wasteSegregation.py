@@ -115,4 +115,3 @@ plt.plot(range(1, 11), history.acc)
 plt.xlabel('Epochs')
 plt.ylabel('Accuracy')
 plt.show()
-
