@@ -264,3 +264,4 @@ new_img /= 255
 new_img = np.expand_dims(new_img, axis=0)
 print('metal predict: ', model.predict(new_img))
 print('metal predict class: ', model.predict_classes(new_img))
+#
