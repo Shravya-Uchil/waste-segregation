@@ -20,6 +20,8 @@ Run this code from the dataset-resized\dataset-resized folder or by using the au
 ## CNN Implementation:
 We have tried multiple approaches of CNN implementaion and build the best possible CNN classifier for image segregation in order to replicate our results and finding of the project run and execute the below files:
 1. waste_classifier_CNN.py
-2. 
+2. wasteSegregation_CNN.py
+
+You can also find the plots for different augmented and non augmented data in the repository.
 
 
