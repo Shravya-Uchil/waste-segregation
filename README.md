@@ -18,7 +18,7 @@ Run this code from the dataset-resized\dataset-resized folder or by using the au
 ### Using SIFT
 
 ## CNN Implementation:
-We have tried multiple approaches of CNN implementaion and build the best possible CNN classifier for image segregation in order to replicate our results and finding of the project run and execute the below files:
+We have tried multiple approaches of CNN implementaion and built the best possible CNN classifier for image segregation. In order to replicate our results and finding of the project run and execute the below files:
 1. waste_classifier_CNN.py
 2. wasteSegregation_CNN.py
 
