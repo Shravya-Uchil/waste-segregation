@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[78]:
-
 
 import cv2
 import os
@@ -16,35 +14,6 @@ import matplotlib.pyplot as plt
 from scipy import stats
 from sklearn import metrics
 import csv
-#import keras
-#import keras.utils
-#from keras import utils as np_utils
-
-
-# In[79]:
-'''
-
-from tensorflow.keras import regularizers
-from tensorflow.keras.models import Sequential, Model
-from tensorflow.keras.layers import Input, Flatten, Dense, Dropout, BatchNormalization
-from tensorflow.keras.layers import Conv2D, MaxPooling2D, AveragePooling2D, ZeroPadding2D
-from tensorflow.keras.layers import Concatenate
-from tensorflow.keras.preprocessing.image import ImageDataGenerator
-from tensorflow.keras.optimizers import Adam, SGD
-'''
-
-# In[80]:
-
-
-'''
-img2 = cv2.drawKeypoints(image1,kps,None,(255,0,0),4)
-plt.imshow(img2),plt.show
-'''
-
-
-# In[81]:
-
-
 
 
 surf = cv2.xfeatures2d.SURF_create()
@@ -74,9 +43,6 @@ images_train, images_test, y_train, y_test = train_test_split(images,labels, tes
 
 
 
-# In[82]:
-
-
 def to_surf_desc(image):
     (kps, descs) = surf.detectAndCompute(np.array(image), None)
     #print (type(descs))
@@ -88,11 +54,6 @@ def to_surf_desc(image):
 image_surf_train = [to_surf_desc(image) for image in images_train]
 image_surf_test = [to_surf_desc(image) for image in images_test]
 
-#print (image_surf_train)
-#print("kps : {}, descriptors : {}".format(len(kps), descs.shape))
-
-
-# In[83]:
 
 '''
 print (len(image_surf_train))
@@ -218,45 +179,4 @@ cm = pd.DataFrame(test_confusion_matrix, range(6), range(6))
 sn.set(font_scale=1.4)#for label size
 sn.heatmap(cm, annot=True,annot_kws={"size": 16})# font size
 plt.savefig("confusion.png")
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
 
