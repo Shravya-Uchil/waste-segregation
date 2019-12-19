@@ -17,19 +17,24 @@ Note: Code is still crude and needs to be optimized.
 Run this code from the dataset-resized\dataset-resized folder or by using the augmented datset mentioned above. SVM model was trained by tuning various paramenters like the descritors(SIFT and SURF from openCV). Trained models seperately using augmented data and the basic original data.
 ### Using SIFT
 Run the below code to replicate the SVM results:
+#
 SVM_classifier_sift.ipynb
 
 ### Using SURF
 Run the below code to replicate our SVM results:
+#
 SVM_classifier_surf.py
 
 
 ## CNN Implementation:
 We have tried multiple approaches of CNN implementaion and built the best possible CNN classifier for image segregation. In order to replicate our results and finding of the project run and execute the below files:
+#
 1. waste_classifier_CNN.py
+#
 2. wasteSegregation_CNN.py
-
-You can also find the plots for different augmented and non augmented data in the repository.
+#
 We have also implemented VGG16 pre trained model in order to achieve good accuracy since the data set is small it did not perform well despite providing it with the trained weights of object detection.
+#
+You can also find the plots for different augmented and non augmented data in the repository.
 
 
