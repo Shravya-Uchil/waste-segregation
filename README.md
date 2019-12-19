@@ -34,9 +34,8 @@ We have tried multiple approaches of CNN implementaion and built the best possib
 
 We have also implemented VGG16 pre trained model in order to achieve good accuracy since the data set is small it did not perform well despite providing it with the trained weights of object detection.
 
-VGG_trial.py - Non weighted code
-
-VGG16_.py - Weighted code. will need VGG16 weights to be downloaded
+1. VGG_trial.py - Non weighted code
+2. VGG16_.py - Weighted code. will need VGG16 weights to be downloaded
 #
 You can also find the plots for different augmented and non augmented data in the repository.
 
